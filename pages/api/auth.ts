@@ -73,9 +73,11 @@ export default async function handler(
           try {
             //save access_token cookie
             //expire in 1 hour (same as spotify cookie)
-            let expirationDate: Date = new Date(Date.now() + 3600000); //1 hour 
+            let expirationDate: Date = new Date(Date.now() + 3600000); //1 hour
 
-            await c.set("access_token", data.data.access_token, {maxAge: 3600000});
+            await c.set("access_token", data.data.access_token, {
+              maxAge: 3600000,
+            });
             console.log("successfully saved cookies!");
             res.status(200).redirect("/account");
           } catch (e) {

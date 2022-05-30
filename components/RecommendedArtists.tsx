@@ -9,7 +9,7 @@ export default function RecommendedArtists({
   return (
     <>
       <h3>Recommended Artists</h3>
-      <Row style={{ padding: "75px" }}>
+      <Row style={{ padding: '10px 75px 10px 75px'}}>
         {artists!.map((x, index) => {
           if (x!) {
             return (

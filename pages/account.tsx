@@ -230,7 +230,7 @@ const Account = ({
         />
 
         <hr></hr>
-        <Row className="text-center">
+        <Row className="text-center mb-5">
           <p className="mt-3 mb-5">Based on your listening habits, here are some songs and artists you might be interested in </p>
           <Col>
             <RecommendedTracks tracks={recommended_tracks} />

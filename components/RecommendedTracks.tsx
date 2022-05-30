@@ -9,7 +9,7 @@ export default function Tracks({
   return (
     <>
       <h3>Recommended Tracks</h3>
-      <Row style={{ padding: "75px" }}>
+      <Row style={{ padding: '10px 75px 10px 75px'}}>
         {tracks!.map((x, index) => {
           return (
             <Col key={index}>
@@ -25,13 +25,7 @@ export default function Tracks({
               <p style={{ marginBottom: "0px" }}>{x.track_name}</p>
               <p className="text-secondary">{x.artist_name}</p>
               {x.spotify_preview_url! && (
-                <audio
-                  controls
-                  style={{ marginBottom: "50px", maxWidth: "100px" }}
-                >
-                  <source src={x.spotify_preview_url} type="audio/mp3" />
-                  Your browser does not support audio element
-                </audio>
+                <audio src={x.spotify_preview_url} controls style={{width: 'inherit'}}/>
               )}
             </Col>
           );

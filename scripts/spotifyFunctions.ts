@@ -99,7 +99,7 @@ export async function getRecentlyPlayed(t: String) {
       track_name = x.track.name;
       artist_name = x.track.artists[0].name;
       track_cover_art = x.track.album.images[0].url;
-      played_at = x.played_at;
+      played_at = Date.apply(x.played_at);
 
       const y = {
         track_name,

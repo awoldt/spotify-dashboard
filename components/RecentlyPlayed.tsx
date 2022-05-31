@@ -32,7 +32,7 @@ const RecentlyPlayed = ({
                 >
                   {x.artist_name}
                 </p>
-                <code>Played at {x.played_at}</code>
+                <code>Played on {x.played_at}</code>
               </Col>
             );
           }

@@ -105,7 +105,7 @@ export async function generatePagination(
       };
       return x;
     } else {
-      return "pagination data throws error :(";
+      return "pagination item length is invalid";
     }
   } catch (e) {
     console.log("error while generating pagination data :(");

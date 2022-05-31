@@ -29,7 +29,7 @@ export interface recommended_tracks {
   track_art_cover: string;
   track_name: String;
   artist_name: String;
-  spotify_preview_url: string | null;
+  spotify_preview_url: string | undefined;
 }
 
 export interface recommended_artists {

@@ -14,7 +14,7 @@ const RecentlyPlayed = ({
   pagination: any[] | null;
 }) => {
   return (
-    <div style={{ padding: "25px" }}>
+    <div style={{ padding: "25px", backgroundColor: '#f2f2f2', borderRadius: '15px' }}>
       <h2>Recently Played</h2>
       <Row className="text-center">
         {recent_tracks!.pages![active_page! - 1].map(

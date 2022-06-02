@@ -26,6 +26,7 @@ import TopTracks from "../components/TopTracks";
 import TopArtists from "../components/TopArtists";
 import RecentlyPlayed from "../components/RecentlyPlayed";
 import RecommendedTracks from "../components/RecommendedTracks";
+import { getTopArtistsStats } from "../scripts/getDisplayStats";
 import RecommendedArtists from "../components/RecommendedArtists";
 import { generatePagination } from "../scripts/generatePagination";
 import { useState } from "react";
@@ -37,6 +38,7 @@ const Account = ({
   recently_played_data,
   recommended_tracks,
   recommended_artists,
+  top_artists_stats
 }: {
   user_data: user_data | null;
   top_tracks_data: top_track_pagination | null;
@@ -44,6 +46,7 @@ const Account = ({
   recently_played_data: recently_played_pagination | null;
   recommended_tracks: recommended_tracks[] | null;
   recommended_artists: recommended_artists[] | null;
+  top_artists_stats: String[] | null
 }) => {
   const [topTracksActivePage, setTopTracksActivePage] = useState<number>(1);
   const [topArtistsActivePage, setTopArtistsActivePage] = useState<number>(1);
@@ -196,7 +199,6 @@ const Account = ({
                   </a>
                 </div>
 
-           
                 <div className="text-center mt-3">
                   <a href={"/api/auth?signout"}>
                     <Button variant={"danger"}>Sign Out</Button>
@@ -219,6 +221,7 @@ const Account = ({
           artists={top_artists_data}
           active_page={topArtistsActivePage}
           pagination={topArtistsPaginationItems}
+          artists_stats={top_artists_stats}
         />
 
         <hr></hr>
@@ -231,7 +234,10 @@ const Account = ({
 
         <hr></hr>
         <Row className="text-center mb-5">
-          <p className="mt-3 mb-5">Based on your listening habits, here are some songs and artists you might be interested in </p>
+          <p className="mt-3 mb-5">
+            Based on your listening habits, here are some songs and artists you
+            might be interested in{" "}
+          </p>
           <Col>
             <RecommendedTracks tracks={recommended_tracks} />
           </Col>
@@ -295,10 +301,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         recentlyPlayedSongs
       );
 
-      //CONTAINS ALL RETURN DATA
       let userData: user_data = {
         userProfile: userProfileData,
       };
+
+      const topArtistStats: String[] | null = await getTopArtistsStats(
+        topTracks,
+        topArtists
+      );
+      console.log(topArtistStats);
 
       return {
         props: {
@@ -308,6 +319,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
           recently_played_data: RecentlyPlayedPaginationData,
           recommended_tracks: recommendedTracks,
           recommended_artists: recommendedArtists,
+          top_artists_stats: topArtistStats
         },
       };
     } catch (e) {

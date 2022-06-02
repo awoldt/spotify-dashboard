@@ -22,16 +22,18 @@ export async function getTopTracks(t: String) {
     let returnData: top_tracks[];
 
     returnData = await data.data.items.map((track: any) => {
-      let track_name, artist_name, track_cover_art, track_id;
+      let track_name, artist_name, track_cover_art, track_id, spotify_track_link;
       track_name = track.name;
       artist_name = track.artists[0].name;
       track_cover_art = track.album.images[0].url;
       track_id = track.id;
+      spotify_track_link = track.album.artists[0].external_urls.spotify;
       const x = {
         track_name,
         artist_name,
         track_cover_art,
         track_id,
+        spotify_track_link
       };
 
       return x;
@@ -60,14 +62,16 @@ export async function getTopArtists(t: String) {
     let returnData: top_artists[];
 
     returnData = await data.data.items.map((track: any) => {
-      let artist_name, artist_profile_pic, artist_id;
+      let artist_name, artist_profile_pic, artist_id, spotify_artist_link;
       artist_name = track.name;
       artist_profile_pic = track.images[0].url;
       artist_id = track.id;
+      spotify_artist_link = track.external_urls.spotify
       const x = {
         artist_name,
         artist_profile_pic,
         artist_id,
+        spotify_artist_link
       };
 
       return x;
@@ -95,17 +99,18 @@ export async function getRecentlyPlayed(t: String) {
     let returnData: recently_played[];
 
     returnData = await data.data.items.map((x: any) => {
-      let track_name, artist_name, track_cover_art, played_at;
+      let track_name, artist_name, track_cover_art, played_at, spotify_track_link;
       track_name = x.track.name;
       artist_name = x.track.artists[0].name;
       track_cover_art = x.track.album.images[0].url;
       played_at = Date.apply(x.played_at);
-
+      spotify_track_link = x.track.album.external_urls.spotify
       const y = {
         track_name,
         artist_name,
         track_cover_art,
         played_at,
+        spotify_track_link
       };
 
       return y;
@@ -172,17 +177,18 @@ export async function getRecommendedTracks(
     await data.data.tracks.forEach((x: any) => {
       //only add songs with preview url
       if (x.preview_url!) {
-        let track_art_cover, track_name, artist_name, spotify_preview_url;
+        let track_art_cover, track_name, artist_name, spotify_preview_url, spotify_track_link;
         track_name = x.name;
         track_art_cover = x.album.images[0].url;
         artist_name = x.artists[0].name;
         spotify_preview_url = x.preview_url;
-
+        spotify_track_link = x.album.external_urls.spotify
         const y = {
           track_name,
           artist_name,
           track_art_cover,
           spotify_preview_url,
+          spotify_track_link
         };
 
         returnData!.push(y);

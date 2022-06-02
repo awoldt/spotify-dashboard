@@ -9,6 +9,7 @@ export interface top_artists {
   artist_name: String;
   artist_profile_pic: string;
   artist_id: String;
+  spotify_artist_link: string;
 }
 
 export interface top_tracks {
@@ -16,6 +17,7 @@ export interface top_tracks {
   artist_name: String;
   track_cover_art: string;
   track_id: String;
+  spotify_track_link: string
 }
 
 export interface recently_played {
@@ -23,6 +25,7 @@ export interface recently_played {
   artist_name: String;
   track_cover_art: string;
   played_at: String;
+  spotify_track_link: string;
 }
 
 export interface recommended_tracks {
@@ -30,6 +33,7 @@ export interface recommended_tracks {
   track_name: String;
   artist_name: String;
   spotify_preview_url: string | undefined;
+  spotify_track_link: string;
 }
 
 export interface recommended_artists {

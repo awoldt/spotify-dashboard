@@ -36,7 +36,7 @@ const Home: NextPage = () => {
         <p style={{ maxWidth: "500px" }}>
           Sign in to your Spotify account and see all the top tracks and artists
           you listen to, along with recommendations and a web player to listen
-          to new musc! All music data is recent and accurate.
+          to new music! All music data is recent and accurate.
         </p>
         <p>You can see results such as: </p>
         <ul>

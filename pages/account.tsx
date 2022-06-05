@@ -323,7 +323,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         topTracks,
         topArtists
       );
-      console.log(topArtistStats);
 
       return {
         props: {

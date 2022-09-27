@@ -53,7 +53,7 @@ export default function Tracks({
         <Col>
           {trackIndex !== 0 && (
             <Button
-              variant="danger"
+            id="prev-slideshow-btn"
               onClick={() => {
                 setTrackIndex((trackIndex -= 1));
               }}
@@ -77,7 +77,7 @@ export default function Tracks({
         <Col>
           {trackIndex !== tracks!.length - 1 && (
             <Button
-              variant="danger"
+              id="next-slideshow-btn"
               onClick={() => {
                 setTrackIndex((trackIndex += 1));
               }}

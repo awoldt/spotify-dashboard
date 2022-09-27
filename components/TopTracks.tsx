@@ -15,7 +15,7 @@ const TopTracks = ({
     <div
       style={{
         padding: "25px",
-        backgroundColor: "#f2f2f2",
+        backgroundColor: "#0d0d0d",
         borderRadius: "15px",
       }}
     >

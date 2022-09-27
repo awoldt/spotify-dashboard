@@ -127,7 +127,7 @@ const Account = ({
   }
 
   return (
-    <>
+    <div style={{backgroundColor: '#0d0d0d', paddingTop: '25px'}}>
       <Head>
         {user_data!.userProfile!.name && (
           <title>{user_data!.userProfile!.name}&apos;s Spotify Stats</title>
@@ -153,9 +153,9 @@ const Account = ({
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
       </Head>
-      <Container>
+      <Container >
         {user_data !== null && user_data.userProfile !== null && (
-          <div className="text-center" style={{ marginBottom: "50px" }}>
+          <div className="text-center" style={{ marginBottom: "50px"}}>
             {user_data.userProfile.name !== null && (
               <>
                 <div className="mt-4">
@@ -238,7 +238,10 @@ const Account = ({
             Based on your listening habits, here are some songs and artists you
             might be interested in{" "}
           </p>
-          <p style={{ marginTop: "20px", marginBottom: '50px'}} className='text-secondary'>
+          <p
+            style={{ marginTop: "20px", marginBottom: "50px" }}
+            className="text-secondary"
+          >
             All recommendation data gathered from{" "}
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -260,23 +263,18 @@ const Account = ({
           </Col>
         </Row>
       </Container>
-    </>
+    </div>
   );
 };
 
 export default Account;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  console.log("GET /account");
-
   const c = new cookieHandler(context.req, context.res);
-  console.log("cookie before loading page = " + c.get("access_token"));
 
   //400
   //no access_token cookie installed
   if (c.get("access_token") == undefined) {
-    console.log("user does not have cookie installed :(");
-
     return {
       redirect: {
         permanent: false,
@@ -286,10 +284,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
   //200
   else {
-    console.log("user has cookie installed");
-    console.log("fetching user data...");
-    console.log("access_token: " + c.get("access_token"));
-
     try {
       const topTracks: top_tracks[] | null = await getTopTracks(
         String(c.get("access_token"))

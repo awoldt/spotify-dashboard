@@ -11,14 +11,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  console.log("GET /api/auth");
   const c = new cookieHandler(req, res);
 
   //signout
   if (req.query.hasOwnProperty("signout")) {
     try {
       await c.set("access_token");
-      console.log("successfully deleted cookies!\nredirecting to homepage");
       res.redirect("/");
     } catch (e) {
       console.log(e);
@@ -33,7 +31,6 @@ export default async function handler(
       !req.cookies.hasOwnProperty("access_token") &&
       !req.query.hasOwnProperty("code")
     ) {
-      console.log("user does not have cookies OR code, bad request");
       res.status(400).redirect("/");
     }
     //check for cookie first
@@ -41,17 +38,10 @@ export default async function handler(
     else {
       //if cookie installed
       if (req.cookies.hasOwnProperty("access_token")) {
-        console.log(
-          "user has access_token with value " + req.cookies.access_token
-        );
-
         res.redirect("/account");
       }
       //no cookie, get code
       else if (req.query.hasOwnProperty("code")) {
-        console.log("user has code from url querty");
-        console.log("requesting access token...");
-
         try {
           const data = await axios.post(
             "https://accounts.spotify.com/api/token",
@@ -68,8 +58,6 @@ export default async function handler(
             }
           );
 
-          console.log(data.data);
-
           try {
             //save access_token cookie
             //expire in 1 hour (same as spotify cookie)
@@ -78,7 +66,6 @@ export default async function handler(
             await c.set("access_token", data.data.access_token, {
               maxAge: 3600000,
             });
-            console.log("successfully saved cookies!");
             res.status(200).redirect("/account");
           } catch (e) {
             console.log(e);

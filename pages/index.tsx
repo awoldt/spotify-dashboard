@@ -4,7 +4,7 @@ import { Container, Button } from "react-bootstrap";
 
 const Home: NextPage = () => {
   return (
-    <>
+    <div style={{ backgroundColor: "#0d0d0d", padding: '25px'}}>
       <Head>
         <title>Discover Your Music Stats on Spotify</title>
         <link
@@ -59,7 +59,7 @@ const Home: NextPage = () => {
           }
           rel="noreferrer"
         >
-          <Button className="mb-3">
+          <Button className="mb-3" style={{backgroundColor: '#1DB954', borderColor: '#1DB954'}}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -117,7 +117,7 @@ const Home: NextPage = () => {
           </a>
         </span>
       </Container>
-    </>
+    </div>
   );
 };
 

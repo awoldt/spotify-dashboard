@@ -127,7 +127,7 @@ const Account = ({
   }
 
   return (
-    <div style={{backgroundColor: '#0d0d0d', paddingTop: '25px'}}>
+    <>
       <Head>
         {user_data!.userProfile!.name && (
           <title>{user_data!.userProfile!.name}&apos;s Spotify Stats</title>
@@ -153,117 +153,120 @@ const Account = ({
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
       </Head>
-      <Container >
-        {user_data !== null && user_data.userProfile !== null && (
-          <div className="text-center" style={{ marginBottom: "50px"}}>
-            {user_data.userProfile.name !== null && (
-              <>
-                <div className="mt-4">
-                  {user_data.userProfile.profile_img !== null && (
-                    <img
-                      src={user_data.userProfile.profile_img}
-                      style={{
-                        borderRadius: "100px",
-                        width: "150px",
-                        height: "100px",
-                      }}
-                    />
-                  )}
-                  <a
-                    href={user_data.userProfile.spotify_profile_link}
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{ textDecoration: "none" }}
-                  >
-                    <h1>
-                      {user_data.userProfile.name}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-box-arrow-up-right"
-                        viewBox="0 0 16 16"
-                        style={{ marginLeft: "10px" }}
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
-                        />
-                        <path
-                          fillRule="evenodd"
-                          d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
-                        />
-                      </svg>
-                    </h1>
-                  </a>
-                </div>
 
-                <div className="text-center mt-3">
-                  <a href={"/api/auth?signout"}>
-                    <Button variant={"danger"}>Sign Out</Button>
-                  </a>
-                </div>
-              </>
-            )}
-          </div>
-        )}
+      <Container fluid style={{ backgroundColor: "black", paddingTop: "25px" }}>
+        <Container>
+          {user_data !== null && user_data.userProfile !== null && (
+            <div className="text-center" style={{ marginBottom: "50px" }}>
+              {user_data.userProfile.name !== null && (
+                <>
+                  <div className="mt-4">
+                    {user_data.userProfile.profile_img !== null && (
+                      <img
+                        src={user_data.userProfile.profile_img}
+                        style={{
+                          borderRadius: "100px",
+                          width: "150px",
+                          height: "100px",
+                        }}
+                      />
+                    )}
+                    <a
+                      href={user_data.userProfile.spotify_profile_link}
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{ textDecoration: "none" }}
+                    >
+                      <h1>
+                        {user_data.userProfile.name}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          className="bi bi-box-arrow-up-right"
+                          viewBox="0 0 16 16"
+                          style={{ marginLeft: "10px" }}
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
+                          />
+                          <path
+                            fillRule="evenodd"
+                            d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
+                          />
+                        </svg>
+                      </h1>
+                    </a>
+                  </div>
 
-        <TopTracks
-          tracks_data={top_tracks_data}
-          active_page={topTracksActivePage}
-          pagination={topTracksPaginationItems}
-        />
+                  <div className="text-center mt-3">
+                    <a href={"/api/auth?signout"}>
+                      <Button variant={"danger"}>Sign Out</Button>
+                    </a>
+                  </div>
+                </>
+              )}
+            </div>
+          )}
 
-        <hr></hr>
+          <TopTracks
+            tracks_data={top_tracks_data}
+            active_page={topTracksActivePage}
+            pagination={topTracksPaginationItems}
+          />
 
-        <TopArtists
-          artists={top_artists_data}
-          active_page={topArtistsActivePage}
-          pagination={topArtistsPaginationItems}
-          artists_stats={top_artists_stats}
-        />
+          <hr></hr>
 
-        <hr></hr>
+          <TopArtists
+            artists={top_artists_data}
+            active_page={topArtistsActivePage}
+            pagination={topArtistsPaginationItems}
+            artists_stats={top_artists_stats}
+          />
 
-        <RecentlyPlayed
-          recent_tracks={recently_played_data}
-          active_page={recentlyPlayedActivePage}
-          pagination={recentlyPlayedPaginationItems}
-        />
+          <hr></hr>
 
-        <hr></hr>
-        <Row className="text-center mb-5">
-          <p className="mt-3 mb-0">
-            Based on your listening habits, here are some songs and artists you
-            might be interested in{" "}
-          </p>
-          <p
-            style={{ marginTop: "20px", marginBottom: "50px" }}
-            className="text-secondary"
-          >
-            All recommendation data gathered from{" "}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              className="bi bi-spotify"
-              viewBox="0 0 16 16"
+          <RecentlyPlayed
+            recent_tracks={recently_played_data}
+            active_page={recentlyPlayedActivePage}
+            pagination={recentlyPlayedPaginationItems}
+          />
+
+          <hr></hr>
+          <Row className="text-center mb-5">
+            <p className="mt-3 mb-0">
+              Based on your listening habits, here are some songs and artists
+              you might be interested in{" "}
+            </p>
+            <p
+              style={{ marginTop: "20px", marginBottom: "50px" }}
+              className="text-secondary"
             >
-              <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.669 11.538a.498.498 0 0 1-.686.165c-1.879-1.147-4.243-1.407-7.028-.77a.499.499 0 0 1-.222-.973c3.048-.696 5.662-.397 7.77.892a.5.5 0 0 1 .166.686zm.979-2.178a.624.624 0 0 1-.858.205c-2.15-1.321-5.428-1.704-7.972-.932a.625.625 0 0 1-.362-1.194c2.905-.881 6.517-.454 8.986 1.063a.624.624 0 0 1 .206.858zm.084-2.268C10.154 5.56 5.9 5.419 3.438 6.166a.748.748 0 1 1-.434-1.432c2.825-.857 7.523-.692 10.492 1.07a.747.747 0 1 1-.764 1.288z" />
-            </svg>{" "}
-            Spotify
-          </p>
-          <Col>
-            <RecommendedTracks tracks={recommended_tracks} />
-          </Col>
-          <Col>
-            <RecommendedArtists artists={recommended_artists} />
-          </Col>
-        </Row>
+              All recommendation data gathered from{" "}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                className="bi bi-spotify"
+                viewBox="0 0 16 16"
+              >
+                <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.669 11.538a.498.498 0 0 1-.686.165c-1.879-1.147-4.243-1.407-7.028-.77a.499.499 0 0 1-.222-.973c3.048-.696 5.662-.397 7.77.892a.5.5 0 0 1 .166.686zm.979-2.178a.624.624 0 0 1-.858.205c-2.15-1.321-5.428-1.704-7.972-.932a.625.625 0 0 1-.362-1.194c2.905-.881 6.517-.454 8.986 1.063a.624.624 0 0 1 .206.858zm.084-2.268C10.154 5.56 5.9 5.419 3.438 6.166a.748.748 0 1 1-.434-1.432c2.825-.857 7.523-.692 10.492 1.07a.747.747 0 1 1-.764 1.288z" />
+              </svg>{" "}
+              Spotify
+            </p>
+            <Col>
+              <RecommendedTracks tracks={recommended_tracks} />
+            </Col>
+            <Col>
+              <RecommendedArtists artists={recommended_artists} />
+            </Col>
+          </Row>
+        </Container>
       </Container>
-    </div>
+    </>
   );
 };
 

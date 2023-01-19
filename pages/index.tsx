@@ -73,7 +73,10 @@ const Home: NextPage = () => {
             </a>
           </Button>
 
-          <p className="text-secondary mb-5" style={{ fontSize: "14px" }}>
+          <p
+            className="text-secondary mb-5"
+            style={{ fontSize: "14px", marginTop: "50px" }}
+          >
             All data gathered using Spotify API. No personal data is saved.
             <br></br> This site has no affiliation with Spotify.
             <br></br>

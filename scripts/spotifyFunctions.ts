@@ -51,7 +51,7 @@ export async function getTopTracks(t: String) {
 export async function getTopArtists(t: String) {
   try {
     const data = await axios.get(
-      "https://api.spotify.com/v1/me/top/artists?limit=50",
+      "https://api.spotify.com/v1/me/top/artists?limit=30",
       {
         headers: {
           Authorization: "Bearer " + t,

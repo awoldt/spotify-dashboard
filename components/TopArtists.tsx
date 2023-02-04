@@ -61,7 +61,7 @@ const TopArtists = ({
                           <span>{index + 1 + (active_page! - 1) * 10}.</span>
                           <img
                             src={x.artist_profile_pic}
-                            style={{ width: "100px", height: "100px" }}
+                            style={{ width: "100px", height: "100px", borderRadius: '100px'}}
                           />
                           <p style={{ marginBottom: "0px" }}>{x.artist_name}</p>
                           <svg

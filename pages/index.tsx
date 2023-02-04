@@ -73,6 +73,32 @@ const Home: NextPage = () => {
             </a>
           </Button>
 
+          <Row className="mt-5 mb-5">
+            <Col md={4} className="mb-4">
+              <img src="/vinyl-icon.svg" alt="music icon" className="mb-4" />
+              <h2>Top Tracks</h2>
+              <p>View the top 50 tracks you&apos;ve been playing the most</p>
+            </Col>
+            <Col md={4} className="mb-4">
+              <img
+                src="/person-circle.svg"
+                alt="person icon"
+                className="mb-4"
+              />
+              <h2>Top Artists</h2>
+              <p>Top artists based on all the music you listen to</p>
+            </Col>
+            <Col md={4} className="mb-4">
+              <img
+                src="/music-note-list.svg"
+                alt="music icon"
+                className="mb-4"
+              />
+              <h2>Recommended Music</h2>
+              <p>Generated playlist based on your interests in music</p>
+            </Col>
+          </Row>
+
           <p
             className="text-secondary mb-5"
             style={{ fontSize: "14px", marginTop: "50px" }}

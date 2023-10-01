@@ -157,26 +157,25 @@ const Account = ({
       <Container fluid style={{ backgroundColor: "black", paddingTop: "25px" }}>
         <Container>
           {user_data !== null && user_data.userProfile !== null && (
-            <div className="text-center" style={{ marginBottom: "50px" }}>
+            <div style={{ marginBottom: "50px" }}>
               {user_data.userProfile.name !== null && (
                 <>
                   <div className="mt-4">
-                    {user_data.userProfile.profile_img !== null && (
-                      <img
-                        src={user_data.userProfile.profile_img}
-                        style={{
-                          borderRadius: "100px",
-                          width: "150px",
-                          height: "100px",
-                        }}
-                      />
-                    )}
                     <a
                       href={user_data.userProfile.spotify_profile_link}
                       target="_blank"
                       rel="noreferrer"
                       style={{ textDecoration: "none" }}
                     >
+                      {user_data.userProfile.profile_img !== null && (
+                        <img
+                          src={user_data.userProfile.profile_img}
+                          style={{
+                            width: "150px",
+                            height: "100px",
+                          }}
+                        />
+                      )}
                       <h1>
                         {user_data.userProfile.name}
                         <svg
@@ -201,9 +200,9 @@ const Account = ({
                     </a>
                   </div>
 
-                  <div className="text-center mt-3">
+                  <div className="mt-3">
                     <a href={"/api/auth?signout"}>
-                      <Button variant={"danger"}>Sign Out</Button>
+                      <Button variant={"danger"}><img src="/door-closed-fill.svg" alt="door icon"/>Log Out</Button>
                     </a>
                   </div>
                 </>
